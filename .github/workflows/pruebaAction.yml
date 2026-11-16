@@ -4,13 +4,37 @@ on:
   push:
     #se ejecutaria solo al hacer push a la rama main
     branches: [main]
-  
 jobs:
   calculadora:
     runs-on: ubuntu-latest
     steps:
     - use: actions/checkout@v5
     - name: Descargamos repositorio
+    
+    -name: Configuracion java
+     uses: actions/setup-java@v5
+     with:
+        distribution: temurin
+        java-version: '21'
+        
+    -name: cracion carpeta y complilacion
+     run: |
+       mkdir -p out
+       javac -d out src/*.java
+       
+    -name: Ejecutar jar
+     run: java -ea -cp out CalculadoraTest
+       
+    -name: Crear jar
+     run: java cfe out/calculadora.jar Main -C out .
+     
+    -name: Ejecutar Calculadora.jar
+     run: java -jar out/calculadora.jar 
+
+    -name: Subir artefacto
+     uses: actions/upload.artifact@v5
+     with:
+       name: caluladora     
     
       
         
