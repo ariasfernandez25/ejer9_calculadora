@@ -34,8 +34,7 @@ jobs:
     - name: Subir artefacto
       uses: actions/upload.artifact@v5
       with:
-        name: caluladora     
-    
+        name: caluladora
       
         
   
