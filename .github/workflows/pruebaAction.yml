@@ -1,0 +1,17 @@
+name: GitAtion Ejercicio 1 test-artefacto
+
+on:
+  push:
+    #se ejecutaria solo al hacer push a la rama main
+    branches: [main]
+  
+jobs:
+  calculadora:
+    runs-on: ubuntu-latest
+    steps:
+    - use: actions/checkout@v5
+    - name: Descargamos repositorio
+      run:
+      
+        
+  
